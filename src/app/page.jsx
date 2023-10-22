@@ -4,7 +4,7 @@ import tie from '../medias/tesing_tie.mp3'
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
-export default function asdf() {
+export default function App() {
   const starRef = useRef(null);
   const audioRef = useRef(null);
   const [Isdone, setIsdone] = useState(false);

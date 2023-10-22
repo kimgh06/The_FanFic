@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import main_theme from '../../medias/mainTheme.mp3';
 import './page.scss';
 
-export default function asdf() {
+export default function App() {
   const [opening, setOpening] = useState(false);
   const starRef = useRef(null);
   const audioRef = useRef(null)
