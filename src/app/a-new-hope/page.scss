@@ -10,6 +10,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    z-index: -1;
   }
 
   h1 {
@@ -68,10 +69,9 @@
       top: auto;
       transform: rotateX(60deg);
       height: 50em;
-      width: 900px;
+      width: 700px;
 
       .description {
-        z-index: 1;
         overflow: hidden;
         position: absolute;
         top: 100%;
@@ -79,6 +79,7 @@
         backface-visibility: hidden;
 
         p {
+          z-index: 1;
           text-align: justify;
           color: yellow;
           font-weight: bold;
@@ -107,6 +108,32 @@
         top: -300%;
         opacity: 0;
       }
+    }
+  }
+
+  .canvas {
+    overflow: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0;
+    animation: canvas 10000s linear;
+  }
+
+  @keyframes canvas {
+    0% {
+      opacity: 0;
+      margin-top: 2000px;
+    }
+
+    .02% {
+      margin-top: 0;
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
     }
   }
 }
