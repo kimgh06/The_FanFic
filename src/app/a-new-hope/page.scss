@@ -1,0 +1,112 @@
+.mainFrame {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .stars {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  h1 {
+    z-index: 20;
+    cursor: pointer;
+    font-weight: normal;
+    color: aqua;
+    font-size: 4vw;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .crawl {
+    @keyframes logo {
+      0% {
+        transform: scale(3);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(.3);
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(.05);
+        opacity: 0;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      top: 25%;
+      left: 0;
+      width: 100%;
+
+      z-index: 1;
+      opacity: 0;
+      animation: logo 13s ease-out;
+
+      svg {
+        width: inherit;
+      }
+    }
+
+    perspective: 700px;
+
+    .content {
+      perspective-origin: 50% 100%;
+      top: auto;
+      transform: rotateX(60deg);
+      height: 50em;
+      width: 900px;
+
+      .description {
+        z-index: 1;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        animation: titles 70s linear 10s;
+        backface-visibility: hidden;
+
+        p {
+          text-align: justify;
+          color: yellow;
+          font-weight: bold;
+          font-size: 50px;
+          margin: 1.35em 0 1.85em 0;
+          line-height: 1.35em;
+        }
+
+        .center {
+          text-align: center;
+        }
+      }
+    }
+
+    @keyframes titles {
+      0% {
+        top: 100%;
+        opacity: 1;
+      }
+
+      95% {
+        opacity: 1;
+      }
+
+      100% {
+        top: -300%;
+        opacity: 0;
+      }
+    }
+  }
+}
