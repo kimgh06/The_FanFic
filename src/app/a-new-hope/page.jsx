@@ -174,8 +174,8 @@ export default function App() {
                 <sphereGeometry />
                 <meshStandardMaterial color={'blue'} />
               </mesh>
-              <Destroyer position={[7, 8, 85]} scale={[0.05, 0.05, 0.05]} />
-              <Tantive position={[3, 2, 15]} scale={[0.05, 0.05, 0.05]} />
+              <Destroyer position={[7, 8, 120]} scale={[0.05, 0.05, 0.05]} />
+              <Tantive position={[3, 2, 25]} scale={[0.05, 0.05, 0.05]} />
             </Canvas>
           </div>
         }

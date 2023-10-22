@@ -118,7 +118,7 @@
     height: 100vh;
     z-index: 0;
     opacity: 0;
-    animation: canvas 10000s linear;
+    animation: canvas 10000s ease;
   }
 
   @keyframes canvas {
