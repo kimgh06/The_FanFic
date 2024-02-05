@@ -53,6 +53,9 @@ export default function App() {
         <Link href={'/a-new-hope'} >
           Episode IV: A New Hope
         </Link>
+        <Link href={'/trench-run'} >
+          Deathstar Trench Run
+        </Link>
       </div>}
   </div>
 }
