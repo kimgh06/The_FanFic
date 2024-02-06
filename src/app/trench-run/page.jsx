@@ -205,6 +205,7 @@ function Trench(props) {
   })
   return <mesh ref={ref} {...props}>
     <primitive object={model.scene} />
+    <meshStandardMaterial metalness={1} />
   </mesh>
 }
 
