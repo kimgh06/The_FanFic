@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vader's TIE
+* source:	https://sketchfab.com/3d-models/vaders-tie-873d6c1d5f484ef9aa0537fe749dc0c3
+* author:	StarWars-Universe (https://sketchfab.com/SWU)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vader's TIE" (https://sketchfab.com/3d-models/vaders-tie-873d6c1d5f484ef9aa0537fe749dc0c3) by StarWars-Universe (https://sketchfab.com/SWU) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
