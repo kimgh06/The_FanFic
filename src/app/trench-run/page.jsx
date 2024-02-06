@@ -5,10 +5,17 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useEffect, useRef, useState } from 'react';
 
-const trench_speed = 0.15, trench_start = -50, trench_up_start = -20, trench_z_position = 11.6;
+const trench_speed = 0.15, trench_start = -60, trench_up_start = -20, trench_z_position = 11.6, trench_end = 20, trench_between = 25;
 
 export default function TrunchRun() {
-  return <Canvas shadows camera={{ position: [3, 0.5, 1] }}>
+  const [bullet, setBullet] = useState(false)
+  useEffect(a => {
+    const inter = setInterval(() => {
+      setBullet(e => !e)
+    }, 500);
+    return e => clearInterval(inter)
+  }, []);
+  return <Canvas shadows camera={{ position: [2, 0.5, 0.5] }}>
     <ambientLight intensity={0.1} />
     <directionalLight color={'white'} position={[8, 1, 0]} />
     <OrbitControls />
@@ -21,7 +28,34 @@ export default function TrunchRun() {
     <TIE2 scale={0.01} />
     <AdvancedX1 scale={0.0001} />
     <axesHelper args={[5]} />
+    {bullet && <Bullet1 />}
   </Canvas>
+}
+
+function Bullet1(props) {
+  const ref = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  useEffect(e => {
+    ref.current.rotation.z = Math.PI / 2
+    ref.current.position.x = 0.5
+    leftRef.current.position.z -= 0.1
+    rightRef.current.position.z += 0.1
+  }, [])
+  useFrame(e => {
+    ref.current.position.x -= 0.3;
+  })
+  return <mesh ref={ref} {...props}>
+    <mesh ref={leftRef}>
+      <cylinderGeometry args={[0.01, 0.01, 2]} />
+      <meshStandardMaterial color={'red'} />
+    </mesh>
+    <mesh ref={rightRef}>
+      <cylinderGeometry args={[0.01, 0.01, 2]} />
+      <meshStandardMaterial color={'red'} />
+    </mesh>
+    <pointLight position={[ref?.current?.position?.x || 0, ref?.current?.position?.y || 0, ref?.current?.position?.z + 1 || 1]} />
+  </mesh>
 }
 
 function Xwing(props) {
@@ -32,12 +66,12 @@ function Xwing(props) {
   useEffect(e => {
     ref.current.rotation.y = -Math.PI / 2
     ref.current.position.x = -1
+    ref.current.position.y = -0.1
   }, []);
   useFrame(e => {
-    console.log(ref.current.position.z)
-    if (ref.current.position.y >= 0.03) {
+    if (ref.current.position.y >= 0.03 - 0.1) {
       setY(e => -0.001);
-    } else if (ref.current.position.y < -0.03) {
+    } else if (ref.current.position.y < -0.03 - 0.1) {
       setY(e => 0.001);
     }
     ref.current.position.y += y;
@@ -65,7 +99,6 @@ function TIE1(props) {
     ref.current.position.y = -0.1
   }, []);
   useFrame(e => {
-    console.log(ref.current.position.z)
     if (ref.current.position.y >= 0.03 - 0.1) {
       setY(e => -0.001);
     } else if (ref.current.position.y < -0.03 - 0.1) {
@@ -96,7 +129,6 @@ function TIE2(props) {
     ref.current.position.z = -0.5
   }, []);
   useFrame(e => {
-    console.log(ref.current.position.z)
     if (ref.current.position.y >= 0.03 - 0.1) {
       setY(e => -0.001);
     } else if (ref.current.position.y < -0.03 - 0.1) {
@@ -125,7 +157,6 @@ function AdvancedX1(props) {
     ref.current.position.x = 1
   }, []);
   useFrame(e => {
-    console.log(ref.current.position.z)
     if (ref.current.position.y >= 0.03) {
       setY(e => -0.001);
     } else if (ref.current.position.y < -0.03) {
@@ -166,7 +197,7 @@ function Trench(props) {
       ref.current.position.y += 1;
       return;
     }
-    if (ref.current.position.x >= 10) {
+    if (ref.current.position.x >= trench_end) {
       setPositioning(true);
       return;
     }
@@ -182,7 +213,7 @@ function Trench2(props) {
   const model1 = useLoader(GLTFLoader, './Trench2.glb')
   const [positioning, setPositioning] = useState(false);
   useEffect(e => {
-    ref.current.position.x = -15;
+    ref.current.position.x = -trench_between;
     ref.current.position.z = trench_z_position;
   }, [])
   useFrame(e => {
@@ -200,7 +231,7 @@ function Trench2(props) {
       ref.current.position.y += 1;
       return;
     }
-    if (ref.current.position.x >= 10) {
+    if (ref.current.position.x >= trench_end) {
       setPositioning(true);
       return;
     }
@@ -216,7 +247,7 @@ function Trench3(props) {
   const model1 = useLoader(GLTFLoader, './Trench3.glb')
   const [positioning, setPositioning] = useState(false);
   useEffect(e => {
-    ref.current.position.x = -30;
+    ref.current.position.x = -trench_between * 2;
     ref.current.position.z = trench_z_position;
   }, [])
   useFrame(e => {
@@ -234,7 +265,7 @@ function Trench3(props) {
       ref.current.position.y += 1;
       return;
     }
-    if (ref.current.position.x >= 10) {
+    if (ref.current.position.x >= trench_end) {
       setPositioning(true);
       return;
     }
@@ -250,7 +281,7 @@ function Trench4(props) {
   const model1 = useLoader(GLTFLoader, './Trench4.glb')
   const [positioning, setPositioning] = useState(false);
   useEffect(e => {
-    ref.current.position.x = -45;
+    ref.current.position.x = -trench_between * 3;
     ref.current.position.z = trench_z_position;
   }, [])
   useFrame(e => {
@@ -268,7 +299,7 @@ function Trench4(props) {
       ref.current.position.y += 1;
       return;
     }
-    if (ref.current.position.x >= 10) {
+    if (ref.current.position.x >= trench_end) {
       setPositioning(true);
       return;
     }
