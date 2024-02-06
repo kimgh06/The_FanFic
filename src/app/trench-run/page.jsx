@@ -27,7 +27,7 @@ export default function TrunchRun() {
     <TIE1 scale={0.01} />
     <TIE2 scale={0.01} />
     <AdvancedX1 scale={0.0001} />
-    <axesHelper args={[5]} />
+    {/* <axesHelper args={[5]} /> */}
     {bullet && <Bullet1 />}
   </Canvas>
 }
